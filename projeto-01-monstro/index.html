@@ -7,10 +7,48 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-    <div class="panel scores"></div>
-    <div class="panel result"></div>
-    <div class="panel buttons"></div>
-    <div class="panel logs"></div>
+    <div id="app">
+        <div class="panel scores">
+            <div class="score">
+                <h1>Jogador</h1>
+                <div class="life-bar">
+                    <div class="life" 
+                    :class="{danger: playerLife < 20}"
+                    :style="{width: playerLife + '%'}"></div>
+                </div>
+                <div class="player-life">
+                    {{ playerLife }}%
+                </div>
+            </div>
+            <div class="score">
+                <h1>Monstro</h1>
+                <div class="life-bar">
+                    <div class="life"
+                    :class="{danger: enemyLife < 20}"
+                    :style="{width: enemyLife + '%'}"></div>
+                </div>
+                <div class="player-life">
+                    {{ enemyLife }}%
+                </div>
+            </div>
+        </div>
+        <div class="panel result">
+            <div v-if="monsterLife <= 0" class="win">Você ganhou! :)</div>
+            <div v-else class="lose">Você perdeu! :(</div>
+        </div>
+        <div class="panel buttons">
+            <template v-if="running">
+                <button class="btn attack">ATAQUE</button>
+                <button class="btn special-attack">ATAQUE ESPECIAL</button>
+                <button class="btn heal">CURAR</button>
+                <button class="btn end-game">DESISTIR</button>
+            </template>
+            <template v-else>
+                <button @click="running = true" class="btn start-game">Iniciar jogo</button>
+            </template>
+        </div>
+        <div class="panel logs"></div>
+    </div>
 
     <script src="app.js"></script>
 </body>
