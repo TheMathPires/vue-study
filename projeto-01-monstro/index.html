@@ -41,10 +41,10 @@
                 <button class="btn attack">ATAQUE</button>
                 <button class="btn special-attack">ATAQUE ESPECIAL</button>
                 <button class="btn heal">CURAR</button>
-                <button class="btn end-game">DESISTIR</button>
+                <button @click="running = false" class="btn end-game">DESISTIR</button>
             </template>
             <template v-else>
-                <button @click="running = true" class="btn start-game">Iniciar jogo</button>
+                <button @click="startGame" class="btn start-game">Iniciar jogo</button>
             </template>
         </div>
         <div class="panel logs"></div>
