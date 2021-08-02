@@ -34,13 +34,13 @@
         </div>
         <div class="panel result">
             <div v-if="monsterLife <= 0" class="win">Você ganhou! :)</div>
-            <div v-else class="lose">Você perdeu! :(</div>
+            <div v-else-if="playerLife <= 0" class="lose">Você perdeu! :(</div>
         </div>
         <div class="panel buttons">
             <template v-if="running">
                 <button class="btn attack" @click="attack(false)">ATAQUE</button>
                 <button class="btn special-attack" @click="attack(true)">ATAQUE ESPECIAL</button>
-                <button class="btn heal">CURAR</button>
+                <button @click="healAndHurt" class="btn heal">CURAR</button>
                 <button @click="running = false" class="btn end-game">DESISTIR</button>
             </template>
             <template v-else>
