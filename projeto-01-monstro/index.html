@@ -24,11 +24,11 @@
                 <h1>Monstro</h1>
                 <div class="life-bar">
                     <div class="life"
-                    :class="{danger: enemyLife < 20}"
-                    :style="{width: enemyLife + '%'}"></div>
+                    :class="{danger: monsterLife < 20}"
+                    :style="{width: monsterLife + '%'}"></div>
                 </div>
                 <div class="player-life">
-                    {{ enemyLife }}%
+                    {{ monsterLife }}%
                 </div>
             </div>
         </div>
@@ -38,8 +38,8 @@
         </div>
         <div class="panel buttons">
             <template v-if="running">
-                <button class="btn attack">ATAQUE</button>
-                <button class="btn special-attack">ATAQUE ESPECIAL</button>
+                <button class="btn attack" @click="attack(false)">ATAQUE</button>
+                <button class="btn special-attack" @click="attack(true)">ATAQUE ESPECIAL</button>
                 <button class="btn heal">CURAR</button>
                 <button @click="running = false" class="btn end-game">DESISTIR</button>
             </template>
